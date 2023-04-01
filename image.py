@@ -1,13 +1,23 @@
+from PyQt5 import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import Qt
+
 from PIL import Image, ImageDraw, ImageGrab
 import os, os.path
 
-current_path = os.curdir
-cache_path = os.path.join(current_path, 'image_cache')
+cache_path = os.path.join(os.curdir, 'image_cache')
 image_path = os.path.join(cache_path, 'image.png')
 
 class Fit_Image():
     def __init__(self) -> None:
         self.image = None
+        self.qt_img = None
+        self.qt_img = QImage(image_path)
+
+    def get(self):
+        return QPixmap.fromImage(self.qt_img)
+
         
     def copy(self):
         print("copied")
@@ -15,8 +25,10 @@ class Fit_Image():
     def paste(self):
         self.image = ImageGrab.grabclipboard()
         if self.image:
-            pass
-        self.replace_image_cache()
+            self.replace_image_cache()
+            if self.image_exists():
+                self.qt_img = QImage(image_path)
+                return QPixmap.fromImage(self.qt_img)
 
     def replace_image_cache(self):
         if not os.path.exists(cache_path):
