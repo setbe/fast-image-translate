@@ -15,6 +15,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 600)
+        MainWindow.setMinimumSize(QtCore.QSize(0, 0))
         MainWindow.setStyleSheet("QMainWindow {\n"
 "    background: #1C2F2F;\n"
 "}\n"
@@ -68,19 +69,50 @@ class Ui_MainWindow(object):
 "\n"
 "QLabel {\n"
 "    color: white;\n"
-"}")
+"}\n"
+"\n"
+"QSpinBox {\n"
+"    background: #304343;\n"
+"    color: white;\n"
+"    border: 0px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"    background: #7976B8;\n"
+"    color: white;\n"
+"    border: 0px;\n"
+"    width: 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button {\n"
+"    background: #A65353;\n"
+"    color: white;\n"
+"    border: 0px;\n"
+"    width: 10px;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"    background: #253636;\n"
+"    color: white;\n"
+"    padding-left: 6px;\n"
+"    border-radius: 4px;\n"
+"    border: 0px;\n"
+"}\n"
+"")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setContentsMargins(-1, 0, -1, -1)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.frame_2 = QtWidgets.QFrame(self.centralwidget)
-        self.frame_2.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_2.setObjectName("frame_2")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_2)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.frame_3 = QtWidgets.QFrame(self.frame_2)
+        self.frame_4 = QtWidgets.QFrame(self.centralwidget)
+        self.frame_4.setMaximumSize(QtCore.QSize(16777215, 30))
+        self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.frame_4)
+        self.horizontalLayout_3.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.frame_3 = QtWidgets.QFrame(self.frame_4)
         self.frame_3.setMaximumSize(QtCore.QSize(16777215, 80))
         self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -97,9 +129,56 @@ class Ui_MainWindow(object):
         self.btn_text = QtWidgets.QPushButton(self.frame_3)
         self.btn_text.setObjectName("btn_text")
         self.horizontalLayout_2.addWidget(self.btn_text)
-        self.horizontalLayout.addWidget(self.frame_3)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
+        self.horizontalLayout_3.addWidget(self.frame_3)
+        spacerItem = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem)
+        self.label_tool = QtWidgets.QLabel(self.frame_4)
+        self.label_tool.setObjectName("label_tool")
+        self.horizontalLayout_3.addWidget(self.label_tool)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem1)
+        self.label_2 = QtWidgets.QLabel(self.frame_4)
+        self.label_2.setObjectName("label_2")
+        self.horizontalLayout_3.addWidget(self.label_2)
+        self.brush_size = QtWidgets.QSpinBox(self.frame_4)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.brush_size.setFont(font)
+        self.brush_size.setMinimum(1)
+        self.brush_size.setMaximum(100)
+        self.brush_size.setProperty("value", 3)
+        self.brush_size.setObjectName("brush_size")
+        self.horizontalLayout_3.addWidget(self.brush_size)
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem2)
+        self.label_3 = QtWidgets.QLabel(self.frame_4)
+        self.label_3.setObjectName("label_3")
+        self.horizontalLayout_3.addWidget(self.label_3)
+        self.text_size = QtWidgets.QSpinBox(self.frame_4)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.text_size.setFont(font)
+        self.text_size.setMinimum(8)
+        self.text_size.setMaximum(80)
+        self.text_size.setProperty("value", 17)
+        self.text_size.setObjectName("text_size")
+        self.horizontalLayout_3.addWidget(self.text_size)
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem3)
+        self.brush_color = QtWidgets.QPushButton(self.frame_4)
+        self.brush_color.setObjectName("brush_color")
+        self.horizontalLayout_3.addWidget(self.brush_color)
+        self.text_color = QtWidgets.QPushButton(self.frame_4)
+        self.text_color.setObjectName("text_color")
+        self.horizontalLayout_3.addWidget(self.text_color)
+        self.verticalLayout.addWidget(self.frame_4)
+        self.frame_2 = QtWidgets.QFrame(self.centralwidget)
+        self.frame_2.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_2)
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.lang_from = QtWidgets.QComboBox(self.frame_2)
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -116,9 +195,9 @@ class Ui_MainWindow(object):
         self.lang_to.setFont(font)
         self.lang_to.setObjectName("lang_to")
         self.horizontalLayout.addWidget(self.lang_to)
+        self.horizontalLayout.setStretch(0, 5)
+        self.horizontalLayout.setStretch(1, 1)
         self.horizontalLayout.setStretch(2, 5)
-        self.horizontalLayout.setStretch(3, 1)
-        self.horizontalLayout.setStretch(4, 5)
         self.verticalLayout.addWidget(self.frame_2)
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -134,6 +213,18 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         self.verticalLayout_2.addWidget(self.label)
         self.verticalLayout.addWidget(self.frame)
+        self.line_edit = QtWidgets.QLineEdit(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.line_edit.sizePolicy().hasHeightForWidth())
+        self.line_edit.setSizePolicy(sizePolicy)
+        self.line_edit.setMinimumSize(QtCore.QSize(0, 24))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.line_edit.setFont(font)
+        self.line_edit.setObjectName("line_edit")
+        self.verticalLayout.addWidget(self.line_edit)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -144,9 +235,15 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "FIT - Fast Image Translate"))
         self.btn_cursor.setText(_translate("MainWindow", "Cursor"))
         self.btn_brush.setText(_translate("MainWindow", "Brush"))
-        self.btn_text.setText(_translate("MainWindow", "Text"))
+        self.btn_text.setText(_translate("MainWindow", "Add Text"))
+        self.label_tool.setText(_translate("MainWindow", "Selected: Cursor"))
+        self.label_2.setText(_translate("MainWindow", "Brush size:"))
+        self.label_3.setText(_translate("MainWindow", "Text size:"))
+        self.brush_color.setText(_translate("MainWindow", "Brush Color"))
+        self.text_color.setText(_translate("MainWindow", "Text Color"))
         self.btn_reverse.setText(_translate("MainWindow", "<->"))
         self.label.setText(_translate("MainWindow", "Paste your image with Ctrl + V"))
+        self.line_edit.setPlaceholderText(_translate("MainWindow", "Your text here..."))
 
 
 if __name__ == "__main__":
