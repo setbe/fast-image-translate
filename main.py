@@ -156,7 +156,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.image.add_text(last_point.x(), last_point.y())
                     self.check_selected_text_update()
                     self.label.setPixmap(self.image.update())
-            
+                elif self.tool == Tool.CURSOR:
+                    self.image.cursor_pressed(last_point.x(), last_point.y(), True)
+                    self.check_selected_text_update()
+                    self.label.setPixmap(self.image.update())
+
     def mouseMoveEvent(self, event):
         if (event.buttons() == Qt.LeftButton):
             last_point = event.pos()

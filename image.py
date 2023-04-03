@@ -76,9 +76,11 @@ class Fit_Image():
     def paste(self):
         self.image = ImageGrab.grabclipboard()
         if self.image:
+            self.texts.clear()
             self.img_draw = ImageDraw.Draw(self.image)
             self.img_text = Image.new('RGBA', self.image.size, (0, 0, 0, 0))
             self.text_draw = ImageDraw.Draw(self.img_text)
+            self.image.save(image_path)
             return self.update()
         else:
             return None
@@ -91,7 +93,7 @@ class Fit_Image():
         self.texts.append(Text("Some Text", x, y))
         self.was_change_text = True
 
-    def cursor_pressed(self, x: int, y: int):
+    def cursor_pressed(self, x: int, y: int, clicked = False):
         for i, text in enumerate(self.texts):
             font = ImageFont.truetype("calibri.ttf", text.fontsize, encoding="unic")
 
@@ -102,8 +104,9 @@ class Fit_Image():
                     self.selected_text = i
                     self.was_change_text = True
 
-                text.left = x - wh[0] / 2
-                text.top = y - wh[1] / 2
+                if not clicked:
+                    text.left = x - wh[0] / 2
+                    text.top = y - wh[1] / 2
                 return
         self.selected_text = -1
         self.was_change_text = True
